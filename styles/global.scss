@@ -1,0 +1,54 @@
+@use "partials/typography";
+@use "partials/mixins";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Avenir Next";
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+
+ul li {
+  list-style-type: none;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  @include mixins.tablet {
+    font-size: 3.75rem;
+  }
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  @include mixins.tablet {
+    font-size: 2.25rem;
+  }
+}
+h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  @include mixins.tablet {
+    font-size: 1.45rem;
+  }
+}
+p,
+a {
+  font-size: 0.812rem;
+  font-weight: 400;
+  @include mixins.tablet {
+    font-size: 0.875rem;
+  }
+}
