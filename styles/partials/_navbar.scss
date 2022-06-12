@@ -1,0 +1,54 @@
+@use "mixins";
+
+.nav-bar {
+  background-color: #323232;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0 0;
+
+  &__logo {
+    width: 120px;
+    height: 20px;
+  }
+  &__list {
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+    @include mixins.tablet {
+      column-gap: 4rem;
+    }
+  }
+  &__item {
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: 2rem;
+    &--current {
+      border-bottom: 3px solid white;
+    }
+    @include mixins.mobile {
+      width: 50%;
+    }
+    @include mixins.tablet {
+      padding: 0.75rem 0;
+      width: fit-content;
+    }
+  }
+  &__header {
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  @include mixins.tablet {
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 2rem;
+    column-gap: 5rem;
+  }
+  @include mixins.desktop {
+    padding: 0px 10rem;
+  }
+}
