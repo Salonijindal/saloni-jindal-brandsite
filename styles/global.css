@@ -22,8 +22,14 @@ body {
 }
 
 a {
-  color: white;
+  font-size: 0.812rem;
+  color: #ffffff;
   text-decoration: none;
+}
+@media screen and (min-width: 768px) {
+  a {
+    font-size: 0.875rem;
+  }
 }
 
 ul li {
@@ -41,7 +47,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 600;
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   h1 {
     font-size: 3.75rem;
   }
@@ -49,9 +55,9 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   h2 {
     font-size: 2.25rem;
   }
@@ -61,20 +67,18 @@ h3 {
   font-size: 0.875rem;
   font-weight: 600;
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   h3 {
     font-size: 1.45rem;
   }
 }
 
-p,
-a {
+p {
   font-size: 0.812rem;
   font-weight: 400;
 }
-@media (min-width: 768px) {
-  p,
-a {
+@media screen and (min-width: 768px) {
+  p {
     font-size: 0.875rem;
   }
 }/*# sourceMappingURL=global.css.map */

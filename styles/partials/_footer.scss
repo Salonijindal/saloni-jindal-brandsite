@@ -1,0 +1,95 @@
+@use "mixins";
+@use "sass:map";
+@use "colors";
+
+// Footer section
+.footer-section {
+  background-color: map.get(colors.$primary-colors, "bandsite-black");
+  color: map.get(colors.$primary-colors, "white");
+  display: flex;
+  &__item {
+    display: flex;
+    @include mixins.mobile {
+      flex-direction: column;
+      row-gap: 1.5rem;
+    }
+    @include mixins.tablet {
+      flex-direction: row;
+      column-gap: 6%;
+    }
+    @include mixins.desktop {
+      flex-direction: row;
+      column-gap: 6%;
+    }
+  }
+  &__social {
+    display: flex;
+    flex-direction: row;
+    @include mixins.mobile {
+      column-gap: 10%;
+    }
+    @include mixins.tablet {
+      align-self: center;
+      margin-top: 10px;
+      column-gap: 1.5rem;
+    }
+    @include mixins.desktop {
+      align-self: center;
+      margin-top: 10px;
+      column-gap: 1.5rem;
+    }
+  }
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+  &__group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+  &__image {
+    height: 20px;
+    width: 120px;
+    @include mixins.mobile {
+      margin-top: 3rem;
+    }
+    @include mixins.tablet {
+      width: 7.5rem;
+      order: -1;
+      margin-left: auto;
+    }
+    @include mixins.desktop {
+      width: 7.5rem;
+      order: -1;
+      margin-left: auto;
+    }
+  }
+  @include mixins.mobile {
+    flex-direction: column;
+    row-gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+  @include mixins.tablet {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: baseline;
+    row-gap: 2rem;
+    padding: 1rem 2rem 2rem;
+    &__connect {
+      order: -1;
+      width: 50%;
+      min-width: 550px;
+      justify-content: left;
+    }
+    &__panel {
+      width: 100%;
+    }
+    &__copyright {
+      margin-top: 1rem;
+    }
+  }
+  @include mixins.desktop {
+    padding: 1rem 10rem 2rem;
+  }
+}

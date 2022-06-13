@@ -1,20 +1,25 @@
 @use "partials/mixins";
-@use "partials/navbar" as *;
+@use "partials/navbar" as *; //Imported all Nav-bar section
+@use "sass:map";
+@use "partials/_colors";
+@use "partials/footer" as *; // Imported all footer section
 
+//main section
 .main-section {
   display: flex;
   flex-direction: column;
-  row-gap: 1.5rem;
+  @include mixins.mobile {
+    row-gap: 1.5rem;
+  }
   @include mixins.tablet {
     row-gap: 0;
   }
 }
-
+//Hero section
 .hero-section {
   background: url(../assets/Images/hero-bio.jpg);
   background-size: cover;
   background-position: center;
-  height: 30vh;
   min-height: 200px;
   position: relative;
   &::before {
@@ -24,20 +29,26 @@
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: map.get(colors.$primary-colors, "bandsite-black");
+    opacity: 50%;
   }
   &__heading {
     text-align: center;
-    left: 1rem;
-    color: white;
+    color: map.get(colors.$primary-colors, "white");
     position: absolute;
     top: 40%;
+    @include mixins.mobile {
+      left: 1rem;
+    }
     @include mixins.tablet {
       left: 2rem;
     }
     @include mixins.desktop {
       left: 10rem;
     }
+  }
+  @include mixins.mobile {
+    height: 30vh;
   }
   @include mixins.tablet {
     height: 60vh;
@@ -46,16 +57,22 @@
     height: 80vh;
   }
 }
+// About section
 .about-section {
   margin: 0 1rem;
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
   &__container {
     display: flex;
     flex-direction: column;
-    row-gap: 1.5rem;
+    @include mixins.mobile {
+      row-gap: 1.5rem;
+    }
     @include mixins.tablet {
+      margin: 0 3rem;
+      row-gap: 2rem;
+    }
+    @include mixins.desktop {
       margin: 0 3rem;
       row-gap: 2rem;
     }
@@ -63,18 +80,23 @@
   &__panel {
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
-
+    @include mixins.mobile {
+      row-gap: 1rem;
+    }
     @include mixins.tablet {
       row-gap: 1.5rem;
     }
   }
   &__caption {
-    @include mixins.tablet {
-      margin-top: 1rem;
+    @include mixins.mobile {
       &--dark {
+        font-size: 0.875rem;
         font-weight: 600;
       }
+    }
+    @include mixins.tablet {
+      margin-top: 1rem;
+
       @include mixins.desktop {
         width: 80%;
       }
@@ -82,15 +104,24 @@
   }
   &__info {
     display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
+    @include mixins.mobile {
+      flex-direction: column;
+      row-gap: 1rem;
+    }
     @include mixins.tablet {
+      flex-direction: row;
+      column-gap: 2.5rem;
+    }
+    @include mixins.desktop {
       flex-direction: row;
       column-gap: 2.5rem;
     }
   }
   &__image {
     width: 100%;
+  }
+  @include mixins.mobile {
+    row-gap: 1rem;
   }
   @include mixins.tablet {
     margin: 3rem 2rem 2rem;
@@ -100,28 +131,42 @@
     margin: 3rem 10rem 2rem;
   }
 }
+// Gallery section
 .gallery-section {
-  background: #e1e1e1;
-  padding: 1.5rem 1rem;
+  background: map.get(colors.$secondary-colors, "mercury");
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
-
   &__panel {
     display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
+    @include mixins.mobile {
+      flex-direction: column;
+      row-gap: 1rem;
+    }
     @include mixins.tablet {
+      flex-flow: row wrap;
+      justify-content: space-between;
+      gap: 1.5rem 1rem;
+    }
+    @include mixins.desktop {
       flex-flow: row wrap;
       justify-content: space-between;
       gap: 1.5rem 1rem;
     }
   }
   &__image {
-    width: 100%;
+    @include mixins.mobile {
+      width: 100%;
+    }
     @include mixins.tablet {
       width: 31%;
     }
+    @include mixins.desktop {
+      width: 31%;
+    }
+  }
+  @include mixins.mobile {
+    row-gap: 1rem;
+    padding: 1.5rem 1rem;
   }
   @include mixins.tablet {
     padding: 3rem 2rem 2rem;
@@ -129,76 +174,5 @@
   }
   @include mixins.desktop {
     padding: 3rem 10rem 2rem;
-  }
-}
-.footer-section {
-  background-color: #323232;
-  color: white;
-  padding: 1.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  row-gap: 1.5rem;
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
-    @include mixins.tablet {
-      flex-direction: row;
-      column-gap: 6%;
-    }
-  }
-  &__social {
-    display: flex;
-    flex-direction: row;
-    column-gap: 10%;
-    @include mixins.tablet {
-      align-self: center;
-      margin-top: 10px;
-      column-gap: 1.5rem;
-    }
-  }
-  &__icon {
-    @include mixins.tablet {
-      width: 20px;
-      height: 20px;
-    }
-  }
-  &__group {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-  }
-  &__image {
-    margin-top: 3rem;
-    width: 120px;
-    height: 20px;
-    @include mixins.tablet {
-      width: 7.5rem;
-      order: -1;
-      margin-left: auto;
-    }
-  }
-  @include mixins.tablet {
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: baseline;
-    row-gap: 2rem;
-    padding: 1rem 2rem 2rem;
-    &__connect {
-      order: -1;
-      width: 50%;
-      min-width: 550px;
-      justify-content: left;
-    }
-    &__panel {
-      width: 100%;
-    }
-    &__copyright {
-      margin-top: 1rem;
-    }
-  }
-  @include mixins.desktop {
-    padding: 1rem 10rem 2rem;
   }
 }
