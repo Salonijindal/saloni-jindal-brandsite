@@ -176,3 +176,10 @@
     padding: 3rem 10rem 2rem;
   }
 }
+//Comment Section
+.comment-section {
+  &__list {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

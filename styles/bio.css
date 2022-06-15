@@ -423,4 +423,9 @@
   .gallery-section {
     padding: 3rem 10rem 2rem;
   }
+}
+
+.comment-section__list {
+  display: flex;
+  flex-direction: column-reverse;
 }/*# sourceMappingURL=bio.css.map */
