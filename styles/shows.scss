@@ -1,0 +1,59 @@
+@use "partials/mixins";
+@use "partials/navbar" as *; //Imported all Nav-bar section
+@use "sass:map";
+@use "partials/_colors";
+@use "partials/footer" as *; // Imported all footer section
+//main section
+.main-section {
+  display: flex;
+  flex-direction: column;
+  @include mixins.mobile {
+    row-gap: 1.5rem;
+  }
+  @include mixins.tablet {
+    row-gap: 0;
+  }
+}
+
+//Hero section
+.hero-section {
+  background: url(../assets/Images/hero-shows.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 200px;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: map.get(colors.$primary-colors, "bandsite-black");
+    opacity: 50%;
+  }
+  &__heading {
+    text-align: center;
+    color: map.get(colors.$primary-colors, "white");
+    position: absolute;
+    top: 40%;
+    @include mixins.mobile {
+      left: 1rem;
+    }
+    @include mixins.tablet {
+      left: 2rem;
+    }
+    @include mixins.desktop {
+      left: 10rem;
+    }
+  }
+  @include mixins.mobile {
+    height: 30vh;
+  }
+  @include mixins.tablet {
+    height: 60vh;
+  }
+  @include mixins.desktop {
+    height: 80vh;
+  }
+}

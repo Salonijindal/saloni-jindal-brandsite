@@ -28,15 +28,24 @@ let commentArray = [
       "This is art. This is inexplicable magic expressed in the purest way,",
   },
 ];
-window.addEventListener("click", function (event) {
-  event.preventDefault();
-});
-let button = document.getElementById("submit");
-button.addEventListener("click", (e) => {
+
+//Loading array into the UI
+comment();
+
+//Form for Comment section
+let form = document.getElementById("comment-section");
+form.addEventListener("submit", (e) => {
+  //Orevent default reloads
+  e.preventDefault();
+
   //Getting username and comment from user through DOM
-  let username = document.getElementById("name").value;
-  let usercomment = document.getElementById("comment-text").value;
-  console.log(usercomment);
+  const username = e.target.name.value;
+  const usercomment = e.target.comment.value;
+
+  //validation
+  if (!username) {
+  }
+
   //appending values receiving user info from user into our object
   commentArray.push({
     user: username,
@@ -44,17 +53,18 @@ button.addEventListener("click", (e) => {
     comment: usercomment,
   });
   console.log(commentArray);
+
   //populating comment secting through our object
   appendChild({
     user: username,
     date: today,
     comment: usercomment,
   });
+
   //Clear the form
-  document.getElementById("comment-section").reset();
+  form.reset();
 });
 
-comment();
 function comment() {
   for (i = 0; i < commentArray.length; i++) {
     appendChild(commentArray[i]);
@@ -65,37 +75,30 @@ function appendChild(person) {
   //Comment Item
   let commentItem = document.createElement("div");
   commentItem.classList.add("comment-section__item");
-  console.log(commentItem);
 
   //Image Element
   let userImg = document.createElement("img");
   userImg.classList.add("comment-section__image");
-  console.log(userImg);
 
   //Comment Panel
   let commentPanel = document.createElement("div");
   commentPanel.classList.add("comment-section__panel");
-  console.log(commentPanel);
 
   //User Detail
   let userDetail = document.createElement("div");
   userDetail.classList.add("comment-section__detail");
-  console.log(userDetail);
 
   //UserName
   let userName = document.createElement("p");
   userName.classList.add("comment-section__name");
-  console.log(userName);
 
   //User Date
   let userDate = document.createElement("p");
   userDate.classList.add("comment-section__date");
-  console.log(userDate);
 
   //Comment Text
   let commentText = document.createElement("p");
   commentText.classList.add("comment-section__text");
-  console.log(commentText);
 
   //append Name and Date into UserDetail
   userDetail.appendChild(userName);
