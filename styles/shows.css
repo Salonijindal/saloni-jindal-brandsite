@@ -228,6 +228,11 @@
   background-color: #323232;
   opacity: 50%;
 }
+.hero-section__subtitle {
+  text-align: center;
+  color: #ffffff;
+  position: absolute;
+}
 .hero-section__heading {
   text-align: center;
   color: #ffffff;

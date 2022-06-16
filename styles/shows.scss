@@ -32,6 +32,11 @@
     background-color: map.get(colors.$primary-colors, "bandsite-black");
     opacity: 50%;
   }
+  &__subtitle {
+    text-align: center;
+    color: map.get(colors.$primary-colors, "white");
+    position: absolute;
+  }
   &__heading {
     text-align: center;
     color: map.get(colors.$primary-colors, "white");
