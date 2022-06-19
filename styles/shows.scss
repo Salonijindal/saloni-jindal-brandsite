@@ -7,12 +7,6 @@
 .main-section {
   display: flex;
   flex-direction: column;
-  @include mixins.mobile {
-    row-gap: 1.5rem;
-  }
-  @include mixins.tablet {
-    row-gap: 0;
-  }
 }
 
 //Hero section
@@ -66,5 +60,38 @@
   }
   @include mixins.desktop {
     height: 80vh;
+  }
+}
+
+.show-section {
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  &__title {
+    margin: 0 1rem;
+  }
+  &__card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid map.get(colors.$secondary-colors, "mercury");
+  }
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25rem;
+    margin: 0 1rem;
+  }
+  &__heading {
+    color: map.get(colors.$primary-colors, "silver");
+    text-transform: uppercase;
+    font-size: 0.625rem;
+  }
+  &__info {
+    font-weight: 600;
+  }
+  &__btn {
+    margin: 1rem 1rem 0;
   }
 }

@@ -200,16 +200,6 @@
   display: flex;
   flex-direction: column;
 }
-@media screen and (min-width: 320px) {
-  .main-section {
-    row-gap: 1.5rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  .main-section {
-    row-gap: 0;
-  }
-}
 
 .hero-section {
   background: url(../assets/Images/hero-shows.jpg);
@@ -268,4 +258,37 @@
   .hero-section {
     height: 80vh;
   }
+}
+
+.show-section {
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+.show-section__title {
+  margin: 0 1rem;
+}
+.show-section__card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+.show-section__detail {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+  margin: 0 1rem;
+}
+.show-section__heading {
+  color: #afafaf;
+  text-transform: uppercase;
+  font-size: 0.625rem;
+}
+.show-section__info {
+  font-weight: 600;
+}
+.show-section__btn {
+  margin: 1rem 1rem 0;
 }/*# sourceMappingURL=shows.css.map */
