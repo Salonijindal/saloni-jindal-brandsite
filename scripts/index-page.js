@@ -30,10 +30,11 @@ let commentArray = [
 ];
 
 //Loading array into the UI
-comment();
 
 //Form for Comment section
-let form = document.getElementById("comment-section");
+const form = document.getElementById("comment-section");
+
+const commentList = document.querySelector(".comment-section__list");
 form.addEventListener("submit", (e) => {
   //Orevent default reloads
   e.preventDefault();
@@ -54,18 +55,15 @@ form.addEventListener("submit", (e) => {
   });
   console.log(commentArray);
 
-  //populating comment secting through our object
-  appendChild({
-    user: username,
-    date: today,
-    comment: usercomment,
-  });
+  //Render the Comment Object
+  comment();
 
   //Clear the form
   form.reset();
 });
 
 function comment() {
+  commentList.innerHTML = "";
   for (i = 0; i < commentArray.length; i++) {
     appendChild(commentArray[i]);
   }
@@ -113,7 +111,7 @@ function appendChild(person) {
   commentItem.appendChild(commentPanel);
 
   //append each comment into List
-  let commentList = document.querySelector(".comment-section__list");
+
   commentList.append(commentItem);
 
   //Passing values from Comment Array into innerHTML tag
@@ -121,3 +119,4 @@ function appendChild(person) {
   userDate.innerHTML = person.date;
   commentText.innerHTML = person.comment;
 }
+comment();
