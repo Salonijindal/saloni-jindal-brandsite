@@ -20,7 +20,7 @@
   background: url(../assets/Images/hero-shows.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 200px;
+  min-height: 300px;
   position: relative;
   &::before {
     content: "";
@@ -32,28 +32,34 @@
     background-color: map.get(colors.$primary-colors, "bandsite-black");
     opacity: 50%;
   }
-  &__subtitle {
-    text-align: center;
-    color: map.get(colors.$primary-colors, "white");
+  &__panel {
     position: absolute;
+    z-index: 1;
+    height: 50vh;
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    row-gap: 1rem;
+  }
+  &__iframe {
+    height: 120px;
+    width: 100%;
+  }
+  &__title {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+  &__subtitle {
+    color: map.get(colors.$primary-colors, "white");
   }
   &__heading {
-    text-align: center;
     color: map.get(colors.$primary-colors, "white");
-    position: absolute;
-    top: 40%;
-    @include mixins.mobile {
-      left: 1rem;
-    }
-    @include mixins.tablet {
-      left: 2rem;
-    }
-    @include mixins.desktop {
-      left: 10rem;
-    }
   }
   @include mixins.mobile {
-    height: 30vh;
+    height: 50vh;
   }
   @include mixins.tablet {
     height: 60vh;

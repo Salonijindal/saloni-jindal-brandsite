@@ -215,7 +215,7 @@
   background: url(../assets/Images/hero-shows.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 200px;
+  min-height: 300px;
   position: relative;
 }
 .hero-section::before {
@@ -228,35 +228,35 @@
   background-color: #323232;
   opacity: 50%;
 }
-.hero-section__subtitle {
-  text-align: center;
-  color: #ffffff;
+.hero-section__panel {
   position: absolute;
+  z-index: 1;
+  height: 50vh;
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  row-gap: 1rem;
+}
+.hero-section__iframe {
+  height: 120px;
+  width: 100%;
+}
+.hero-section__title {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+.hero-section__subtitle {
+  color: #ffffff;
 }
 .hero-section__heading {
-  text-align: center;
   color: #ffffff;
-  position: absolute;
-  top: 40%;
-}
-@media screen and (min-width: 320px) {
-  .hero-section__heading {
-    left: 1rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  .hero-section__heading {
-    left: 2rem;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .hero-section__heading {
-    left: 10rem;
-  }
 }
 @media screen and (min-width: 320px) {
   .hero-section {
-    height: 30vh;
+    height: 50vh;
   }
 }
 @media screen and (min-width: 768px) {
