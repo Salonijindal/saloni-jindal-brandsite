@@ -32,7 +32,7 @@ let commentArray = [
 //Loading array into the UI
 
 //Form for Comment section
-const form = document.getElementById("comment-section");
+const form = document.getElementById("comment-section__form");
 
 const commentList = document.querySelector(".comment-section__list");
 form.addEventListener("submit", (e) => {
@@ -71,31 +71,35 @@ function comment() {
 function appendChild(person) {
   //Creating Elements and adding classList to it
   //Comment Item
-  let commentItem = document.createElement("div");
+  const commentItem = document.createElement("div");
   commentItem.classList.add("comment-section__item");
 
   //Image Element
-  let userImg = document.createElement("img");
+  const userImgDiv = document.createElement("div");
+  console.log(userImgDiv);
+  const userImg = document.createElement("img");
   userImg.classList.add("comment-section__image");
+  userImgDiv.appendChild(userImg);
+  console.log(userImgDiv);
 
   //Comment Panel
-  let commentPanel = document.createElement("div");
-  commentPanel.classList.add("comment-section__panel");
+  const commentPanel = document.createElement("article");
+  commentPanel.classList.add("comment-section__section");
 
   //User Detail
-  let userDetail = document.createElement("div");
+  const userDetail = document.createElement("div");
   userDetail.classList.add("comment-section__detail");
 
   //UserName
-  let userName = document.createElement("p");
+  const userName = document.createElement("p");
   userName.classList.add("comment-section__name");
 
   //User Date
-  let userDate = document.createElement("p");
+  const userDate = document.createElement("p");
   userDate.classList.add("comment-section__date");
 
   //Comment Text
-  let commentText = document.createElement("p");
+  const commentText = document.createElement("p");
   commentText.classList.add("comment-section__text");
 
   //append Name and Date into UserDetail
@@ -107,12 +111,12 @@ function appendChild(person) {
   commentPanel.appendChild(commentText);
 
   //append image and Comment Panel into comment item
-  commentItem.appendChild(userImg);
+  commentItem.appendChild(userImgDiv);
   commentItem.appendChild(commentPanel);
 
   //append each comment into List
 
-  commentList.append(commentItem);
+  commentList.appendChild(commentItem);
 
   //Passing values from Comment Array into innerHTML tag
   userName.innerHTML = person.user;

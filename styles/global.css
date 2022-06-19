@@ -81,4 +81,46 @@ p {
   p {
     font-size: 0.875rem;
   }
+}
+
+label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #afafaf;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+input[type=text],
+textarea[type=text] {
+  font-family: "Avenir Next";
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid #e1e1e1;
+}
+input[type=text]:focus,
+textarea[type=text]:focus {
+  outline: none;
+  border-color: #323232;
+}
+
+button {
+  height: 2.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  background-color: #323232;
+  color: #ffffff;
+  border-radius: 4px;
+}
+button:hover {
+  background-color: #000000;
+}
+@media screen and (min-width: 768px) {
+  button {
+    width: 10rem;
+    min-width: 9rem;
+    margin-left: auto;
+  }
 }/*# sourceMappingURL=global.css.map */

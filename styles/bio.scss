@@ -8,12 +8,6 @@
 .main-section {
   display: flex;
   flex-direction: column;
-  @include mixins.mobile {
-    row-gap: 1.5rem;
-  }
-  @include mixins.tablet {
-    row-gap: 0;
-  }
 }
 //Hero section
 .hero-section {
@@ -49,6 +43,7 @@
   }
   @include mixins.mobile {
     height: 30vh;
+    padding: 1.5rem 0;
   }
   @include mixins.tablet {
     height: 60vh;
@@ -122,6 +117,7 @@
   }
   @include mixins.mobile {
     row-gap: 1rem;
+    padding: 1.5rem 0;
   }
   @include mixins.tablet {
     margin: 3rem 2rem 2rem;
@@ -178,8 +174,78 @@
 }
 //Comment Section
 .comment-section {
-  &__list {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  &__panel {
+    @include mixins.tablet {
+      margin: 0 3rem;
+      row-gap: 2rem;
+    }
+    @include mixins.desktop {
+      margin: 0 3rem;
+      row-gap: 2rem;
+    }
+  }
+  &__container {
     display: flex;
-    flex-direction: column-reverse;
+    column-gap: 1rem;
+    padding: 1.5rem 0;
+  }
+  &__avatar {
+    background-color: map.get(colors.$secondary-colors, "mercury");
+    width: 2.25rem;
+    height: 2.25rem;
+    max-height: 2.25rem;
+    border-radius: 50%;
+    margin-top: 1.15rem;
+    background-size: cover;
+    background-position: center;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  &__input {
+    height: 2.25rem;
+  }
+  &__item {
+    display: flex;
+    column-gap: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid map.get(colors.$secondary-colors, "mercury");
+    &:last-child {
+      border-bottom: 1px solid map.get(colors.$secondary-colors, "mercury");
+    }
+  }
+  &__image {
+    background-color: map.get(colors.$secondary-colors, "mercury");
+    width: 2.25rem;
+    height: 2.25rem;
+    max-height: 2.25rem;
+    border-radius: 50%;
+  }
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 0.25rem;
+  }
+  &__name {
+    font-weight: 600;
+  }
+  &__date {
+    color: map.get(colors.$primary-colors, "silver");
+  }
+  @include mixins.tablet {
+    padding: 3rem 2rem 2rem;
+  }
+  @include mixins.desktop {
+    padding: 3rem 10rem 2rem;
   }
 }
