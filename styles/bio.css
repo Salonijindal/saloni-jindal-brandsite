@@ -458,6 +458,30 @@
 .comment-section__input {
   height: 2.25rem;
 }
+@media screen and (min-width: 768px) {
+  .comment-section__input {
+    height: 3rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .comment-section__input {
+    height: 3rem;
+  }
+}
+.comment-section__textarea {
+  height: 4.5rem;
+  resize: none;
+}
+@media screen and (min-width: 768px) {
+  .comment-section__textarea {
+    height: 6rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .comment-section__textarea {
+    height: 6rem;
+  }
+}
 .comment-section__list {
   display: flex;
   flex-direction: column-reverse;

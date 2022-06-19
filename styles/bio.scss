@@ -209,6 +209,22 @@
   }
   &__input {
     height: 2.25rem;
+    @include mixins.tablet {
+      height: 3rem;
+    }
+    @include mixins.desktop {
+      height: 3rem;
+    }
+  }
+  &__textarea {
+    height: 4.5rem;
+    resize: none;
+    @include mixins.tablet {
+      height: 6rem;
+    }
+    @include mixins.desktop {
+      height: 6rem;
+    }
   }
   &__list {
     display: flex;

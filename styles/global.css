@@ -123,4 +123,25 @@ button:hover {
     min-width: 9rem;
     margin-left: auto;
   }
+}
+
+::-moz-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #323232;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #323232;
+  opacity: 1;
+  /* Firefox */
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #323232;
+  opacity: 1;
+  /* Firefox */
 }/*# sourceMappingURL=global.css.map */

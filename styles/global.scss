@@ -94,3 +94,8 @@ button {
     margin-left: auto;
   }
 }
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: map.get(colors.$primary-colors, "bandsite-black");
+  opacity: 1; /* Firefox */
+}
