@@ -210,12 +210,16 @@
   &__input {
     height: 2.25rem;
   }
+  &__list {
+    display: flex;
+    flex-direction: column-reverse;
+  }
   &__item {
     display: flex;
     column-gap: 1rem;
     padding: 1rem 0;
     border-top: 1px solid map.get(colors.$secondary-colors, "mercury");
-    &:last-child {
+    &:first-child {
       border-bottom: 1px solid map.get(colors.$secondary-colors, "mercury");
     }
   }
