@@ -45,7 +45,6 @@ function displayShows(item) {
   createElement(showCard, "Date", item.date);
   createElement(showCard, "venue", item.venue);
   createElement(showCard, "location", item.location);
-  console.log(item);
 
   //Button
   const buyTicketButton = document.createElement("button");
@@ -55,7 +54,6 @@ function displayShows(item) {
 }
 //create element Funtion for mobile view
 function createElement(showCard, title, value) {
-  console.log(title);
   //Show detail
   const showDetail = document.createElement("div");
   showDetail.classList.add("show-section__detail");
@@ -75,8 +73,8 @@ function createElement(showCard, title, value) {
   return showCard;
 }
 
-const cardSelected = document.querySelector(".show_section__card");
+const cardSelected = document.querySelectorAll(".show-section__card");
 console.log(cardSelected);
-cardSelected.addEventListener("click", (item) => {
-  console.log(item);
+cardSelected.addEventListener("click", function onClick() {
+  console.log("box clicked");
 });
