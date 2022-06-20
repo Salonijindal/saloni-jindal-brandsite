@@ -14,7 +14,6 @@
   background: url(../assets/Images/hero-shows.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 300px;
   position: relative;
   &::before {
     content: "";
@@ -36,10 +35,32 @@
     flex-direction: column;
     padding: 1.5rem 1rem;
     row-gap: 1rem;
+    @include mixins.tablet {
+      flex-direction: column;
+      height: 70vh;
+      padding: 2rem 2rem 2rem;
+    }
+    @include mixins.desktop {
+      height: 80vh;
+      flex-direction: row;
+      column-gap: 2rem;
+      align-items: center;
+      min-height: 400px;
+      padding: 2rem 10rem 2rem;
+    }
   }
   &__iframe {
     height: 120px;
-    width: 100%;
+
+    @include mixins.mobile {
+      width: 100%;
+    }
+    @include mixins.tablet {
+      width: 60%;
+    }
+    @include mixins.tablet {
+      width: 50%;
+    }
   }
   &__title {
     display: flex;
@@ -54,9 +75,11 @@
   }
   @include mixins.mobile {
     height: 50vh;
+    min-height: 300px;
   }
   @include mixins.tablet {
-    height: 60vh;
+    height: 70vh;
+    min-height: 400px;
   }
   @include mixins.desktop {
     height: 80vh;
@@ -64,34 +87,115 @@
 }
 
 .show-section {
-  padding: 1.5rem 0;
   display: flex;
-  flex-direction: column;
   &__title {
-    margin: 0 1rem;
+    @include mixins.mobile {
+      margin: 0 1rem;
+    }
+    @include mixins.tablet {
+      margin: 0;
+    }
+    @include mixins.desktop {
+      margin: 0;
+      flex-direction: row;
+    }
+  }
+  &__list {
+    padding: 0;
+    @include mixins.tablet {
+      flex-grow: 1;
+    }
   }
   &__card {
     display: flex;
-    flex-direction: column;
-    row-gap: 0.5rem;
-    padding: 1rem 0;
     border-bottom: 1px solid map.get(colors.$secondary-colors, "mercury");
+    cursor: pointer;
+    &:hover {
+      background-color: map.get(colors.$secondary-colors, "alabaster");
+    }
+    &--selected {
+      background-color: map.get(colors.$secondary-colors, "mercury");
+    }
+    @include mixins.mobile {
+      flex-direction: column;
+      row-gap: 0.5rem;
+      padding: 0;
+    }
+    @include mixins.tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+      align-items: center;
+    }
+    @include mixins.desktop {
+    }
   }
   &__detail {
     display: flex;
     flex-direction: column;
     row-gap: 0.25rem;
-    margin: 0 1rem;
+
+    @include mixins.mobile {
+      margin: 0 1rem;
+      width: 100%;
+    }
+    @include mixins.tablet {
+      margin: 0;
+      width: 25%;
+    }
   }
   &__heading {
     color: map.get(colors.$primary-colors, "silver");
     text-transform: uppercase;
     font-size: 0.625rem;
+
+    @include mixins.tablet {
+      font-size: 0.825rem;
+      padding-bottom: 2rem;
+      //   display: none;
+      //   &:nth-child(1) {
+      //     display: none;
+      //   }
+    }
   }
   &__info {
     font-weight: 600;
   }
   &__btn {
-    margin: 1rem 1rem 0;
+    @include mixins.mobile {
+      margin: 1rem 1rem 0;
+    }
+    @include mixins.tablet {
+      margin-top: 4rem;
+    }
+  }
+  @include mixins.mobile {
+    padding: 1.5rem 0;
+    flex-direction: column;
+  }
+  @include mixins.tablet {
+    padding: 0;
+    margin: 2rem 2rem 2rem;
+    flex-direction: column;
+    &__card {
+      padding-top: 1rem;
+      &:not(:nth-child(1)) {
+        .show-section__detail {
+          .show-section__heading {
+            display: none;
+            padding-bottom: 0;
+          }
+        }
+        .show-section__btn {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+  @include mixins.desktop {
+    margin: 0;
+    flex-direction: row;
+    column-gap: 7rem;
+    padding: 2rem 10rem 2rem;
   }
 }

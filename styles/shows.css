@@ -205,7 +205,6 @@
   background: url(../assets/Images/hero-shows.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 300px;
   position: relative;
 }
 .hero-section::before {
@@ -229,9 +228,41 @@
   padding: 1.5rem 1rem;
   row-gap: 1rem;
 }
+@media screen and (min-width: 768px) {
+  .hero-section__panel {
+    flex-direction: column;
+    height: 70vh;
+    padding: 2rem 2rem 2rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .hero-section__panel {
+    height: 80vh;
+    flex-direction: row;
+    -moz-column-gap: 2rem;
+         column-gap: 2rem;
+    align-items: center;
+    min-height: 400px;
+    padding: 2rem 10rem 2rem;
+  }
+}
 .hero-section__iframe {
   height: 120px;
-  width: 100%;
+}
+@media screen and (min-width: 320px) {
+  .hero-section__iframe {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .hero-section__iframe {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .hero-section__iframe {
+    width: 50%;
+  }
 }
 .hero-section__title {
   display: flex;
@@ -247,11 +278,13 @@
 @media screen and (min-width: 320px) {
   .hero-section {
     height: 50vh;
+    min-height: 300px;
   }
 }
 @media screen and (min-width: 768px) {
   .hero-section {
-    height: 60vh;
+    height: 70vh;
+    min-height: 400px;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -261,34 +294,128 @@
 }
 
 .show-section {
-  padding: 1.5rem 0;
   display: flex;
-  flex-direction: column;
 }
-.show-section__title {
-  margin: 0 1rem;
+@media screen and (min-width: 320px) {
+  .show-section__title {
+    margin: 0 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show-section__title {
+    margin: 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .show-section__title {
+    margin: 0;
+    flex-direction: row;
+  }
+}
+.show-section__list {
+  padding: 0;
+}
+@media screen and (min-width: 768px) {
+  .show-section__list {
+    flex-grow: 1;
+  }
 }
 .show-section__card {
   display: flex;
-  flex-direction: column;
-  row-gap: 0.5rem;
-  padding: 1rem 0;
   border-bottom: 1px solid #e1e1e1;
+  cursor: pointer;
+}
+.show-section__card:hover {
+  background-color: #fafafa;
+}
+.show-section__card--selected {
+  background-color: #e1e1e1;
+}
+@media screen and (min-width: 320px) {
+  .show-section__card {
+    flex-direction: column;
+    row-gap: 0.5rem;
+    padding: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show-section__card {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    align-items: center;
+  }
 }
 .show-section__detail {
   display: flex;
   flex-direction: column;
   row-gap: 0.25rem;
-  margin: 0 1rem;
+}
+@media screen and (min-width: 320px) {
+  .show-section__detail {
+    margin: 0 1rem;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show-section__detail {
+    margin: 0;
+    width: 25%;
+  }
 }
 .show-section__heading {
   color: #afafaf;
   text-transform: uppercase;
   font-size: 0.625rem;
 }
+@media screen and (min-width: 768px) {
+  .show-section__heading {
+    font-size: 0.825rem;
+    padding-bottom: 2rem;
+  }
+}
 .show-section__info {
   font-weight: 600;
 }
-.show-section__btn {
-  margin: 1rem 1rem 0;
+@media screen and (min-width: 320px) {
+  .show-section__btn {
+    margin: 1rem 1rem 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show-section__btn {
+    margin-top: 4rem;
+  }
+}
+@media screen and (min-width: 320px) {
+  .show-section {
+    padding: 1.5rem 0;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show-section {
+    padding: 0;
+    margin: 2rem 2rem 2rem;
+    flex-direction: column;
+  }
+  .show-section__card {
+    padding-top: 1rem;
+  }
+  .show-section__card:not(:nth-child(1)) .show-section__detail .show-section__heading {
+    display: none;
+    padding-bottom: 0;
+  }
+  .show-section__card:not(:nth-child(1)) .show-section__btn {
+    margin-top: 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .show-section {
+    margin: 0;
+    flex-direction: row;
+    -moz-column-gap: 7rem;
+         column-gap: 7rem;
+    padding: 2rem 10rem 2rem;
+  }
 }/*# sourceMappingURL=shows.css.map */
