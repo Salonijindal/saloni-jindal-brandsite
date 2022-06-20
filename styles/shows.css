@@ -303,13 +303,47 @@
 }
 @media screen and (min-width: 768px) {
   .show-section__title {
-    margin: 0;
+    margin: 1.5rem;
   }
 }
 @media screen and (min-width: 1280px) {
   .show-section__title {
-    margin: 0;
+    margin: 1.5rem;
     flex-direction: row;
+  }
+}
+.show-section__container {
+  width: 100%;
+}
+@media screen and (min-width: 1280px) {
+  .show-section__container {
+    width: 80%;
+  }
+}
+.show-section__header {
+  color: #afafaf;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 320px) {
+  .show-section__header {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show-section__header {
+    display: flex;
+    font-size: 0.825rem;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1.5rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .show-section__header {
+    display: flex;
+    font-size: 0.825rem;
+    align-items: center;
+    margin: 1.5rem 1.5rem 0;
   }
 }
 .show-section__list {
@@ -318,6 +352,7 @@
 @media screen and (min-width: 768px) {
   .show-section__list {
     flex-grow: 1;
+    margin-top: 0;
   }
 }
 .show-section__card {
@@ -344,6 +379,12 @@
     justify-content: space-between;
     padding-bottom: 1rem;
     align-items: center;
+    padding: 1.5rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .show-section__card {
+    padding: 1.5rem;
   }
 }
 .show-section__detail {
@@ -372,10 +413,21 @@
   .show-section__heading {
     font-size: 0.825rem;
     padding-bottom: 2rem;
+    display: none;
   }
 }
 .show-section__info {
   font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  .show-section__btn--special {
+    visibility: hidden;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .show-section__btn--special {
+    visibility: hidden;
+  }
 }
 @media screen and (min-width: 320px) {
   .show-section__btn {
@@ -384,7 +436,7 @@
 }
 @media screen and (min-width: 768px) {
   .show-section__btn {
-    margin-top: 4rem;
+    margin: 0;
   }
 }
 @media screen and (min-width: 320px) {
@@ -396,18 +448,8 @@
 @media screen and (min-width: 768px) {
   .show-section {
     padding: 0;
-    margin: 2rem 2rem 2rem;
+    margin: 2rem 1rem;
     flex-direction: column;
-  }
-  .show-section__card {
-    padding-top: 1rem;
-  }
-  .show-section__card:not(:nth-child(1)) .show-section__detail .show-section__heading {
-    display: none;
-    padding-bottom: 0;
-  }
-  .show-section__card:not(:nth-child(1)) .show-section__btn {
-    margin-top: 0;
   }
 }
 @media screen and (min-width: 1280px) {

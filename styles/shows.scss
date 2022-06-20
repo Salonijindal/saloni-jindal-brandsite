@@ -86,24 +86,53 @@
   }
 }
 
+//Show Section
 .show-section {
   display: flex;
+
   &__title {
     @include mixins.mobile {
       margin: 0 1rem;
     }
     @include mixins.tablet {
-      margin: 0;
+      margin: 1.5rem;
     }
     @include mixins.desktop {
-      margin: 0;
+      margin: 1.5rem;
       flex-direction: row;
+    }
+  }
+  &__container {
+    width: 100%;
+    @include mixins.desktop {
+      width: 80%;
+    }
+  }
+  &__header {
+    color: map.get(colors.$primary-colors, "silver");
+    text-transform: uppercase;
+    @include mixins.mobile {
+      display: none;
+    }
+    @include mixins.tablet {
+      display: flex;
+      font-size: 0.825rem;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 1.5rem;
+    }
+    @include mixins.desktop {
+      display: flex;
+      font-size: 0.825rem;
+      align-items: center;
+      margin: 1.5rem 1.5rem 0;
     }
   }
   &__list {
     padding: 0;
     @include mixins.tablet {
       flex-grow: 1;
+      margin-top: 0;
     }
   }
   &__card {
@@ -126,8 +155,10 @@
       justify-content: space-between;
       padding-bottom: 1rem;
       align-items: center;
+      padding: 1.5rem;
     }
     @include mixins.desktop {
+      padding: 1.5rem;
     }
   }
   &__detail {
@@ -152,21 +183,26 @@
     @include mixins.tablet {
       font-size: 0.825rem;
       padding-bottom: 2rem;
-      //   display: none;
-      //   &:nth-child(1) {
-      //     display: none;
-      //   }
+      display: none;
     }
   }
   &__info {
     font-weight: 600;
   }
   &__btn {
+    &--special {
+      @include mixins.tablet {
+        visibility: hidden;
+      }
+      @include mixins.desktop {
+        visibility: hidden;
+      }
+    }
     @include mixins.mobile {
       margin: 1rem 1rem 0;
     }
     @include mixins.tablet {
-      margin-top: 4rem;
+      margin: 0;
     }
   }
   @include mixins.mobile {
@@ -175,22 +211,8 @@
   }
   @include mixins.tablet {
     padding: 0;
-    margin: 2rem 2rem 2rem;
+    margin: 2rem 1rem;
     flex-direction: column;
-    &__card {
-      padding-top: 1rem;
-      &:not(:nth-child(1)) {
-        .show-section__detail {
-          .show-section__heading {
-            display: none;
-            padding-bottom: 0;
-          }
-        }
-        .show-section__btn {
-          margin-top: 0;
-        }
-      }
-    }
   }
   @include mixins.desktop {
     margin: 0;

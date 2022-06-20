@@ -1,3 +1,44 @@
+const showSection = document.querySelector(".show-section");
+//Create a div
+const title = document.createElement("div");
+title.classList.add("show-section__header");
+
+//Titles Date
+const date = document.createElement("p");
+date.classList.add("show-section__detail");
+date.innerHTML = "date";
+title.appendChild(date);
+
+//Titles Venue
+const venue = document.createElement("p");
+venue.classList.add("show-section__detail");
+venue.innerHTML = "venue";
+title.appendChild(venue);
+
+//Titles location
+const place = document.createElement("p");
+place.classList.add("show-section__detail");
+place.innerHTML = "location";
+title.appendChild(place);
+
+//invisible button
+const btn = document.createElement("button");
+btn.classList.add("show-section__btn");
+btn.classList.add("show-section__btn--special");
+title.appendChild(btn);
+
+//Create Div for list and header to go into single container
+const commentContainer = document.createElement("div");
+commentContainer.classList.add("show-section__container");
+showSection.appendChild(commentContainer);
+
+//Show List
+const showList = document.querySelector(".show-section__list");
+
+//insert a header first then Comment List
+commentContainer.appendChild(title);
+commentContainer.appendChild(showList);
+
 const showsInfo = [
   {
     date: "Mon Sept 06 2021",
@@ -31,11 +72,12 @@ const showsInfo = [
     location: "San Francisco, CA",
   },
 ];
-const showList = document.querySelector(".show-section__list");
+
 showsInfo.forEach((item) => {
   //   console.log(item);
   displayShows(item);
 });
+
 //display elements for mobile view
 function displayShows(item) {
   //Show Card
