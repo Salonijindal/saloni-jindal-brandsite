@@ -53,7 +53,7 @@ form.addEventListener("submit", (e) => {
     //appending values receiving user info from user into our object
     commentArray.push({
       user: username,
-      date: "6/14/22",
+      date: today,
       comment: usercomment,
     });
     console.log(commentArray);
