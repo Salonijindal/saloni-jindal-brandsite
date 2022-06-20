@@ -335,7 +335,7 @@
   .show-section__card {
     flex-direction: column;
     row-gap: 0.5rem;
-    padding: 0;
+    padding: 1rem 0;
   }
 }
 @media screen and (min-width: 768px) {

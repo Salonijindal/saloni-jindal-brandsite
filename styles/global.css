@@ -18,7 +18,7 @@
 
 body {
   margin: 0;
-  font-family: "Avenir Next";
+  font-family: "Avenir Next", "Garamond, serif";
 }
 
 a {
@@ -63,12 +63,14 @@ h2 {
   }
 }
 
-h3 {
+h3,
+q {
   font-size: 0.875rem;
   font-weight: 600;
 }
 @media screen and (min-width: 768px) {
-  h3 {
+  h3,
+q {
     font-size: 1.45rem;
   }
 }
