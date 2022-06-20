@@ -94,7 +94,7 @@ label {
 input[type=text],
 textarea[type=text] {
   font-family: "Avenir Next";
-  padding: 12px;
+  padding: 0.865rem;
   border-radius: 4px;
   margin-bottom: 1rem;
   border: 1px solid #e1e1e1;
@@ -103,6 +103,17 @@ input[type=text]:focus,
 textarea[type=text]:focus {
   outline: none;
   border-color: #323232;
+}
+input[type=text]:active,
+textarea[type=text]:active {
+  outline: none;
+  border-color: #323232;
+}
+@media screen and (min-width: 768px) {
+  input[type=text],
+textarea[type=text] {
+    padding: 1rem;
+  }
 }
 
 button {

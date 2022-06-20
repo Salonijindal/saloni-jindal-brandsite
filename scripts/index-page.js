@@ -39,27 +39,35 @@ form.addEventListener("submit", (e) => {
   //Orevent default reloads
   e.preventDefault();
 
+  const userNameInput = document.querySelector(".comment-section__input");
+  const usertextArea = document.querySelector(".comment-section__textarea");
+  userNameInput.classList.remove("comment-section__input--error");
+  usertextArea.classList.remove("comment-section__input--error");
+
   //Getting username and comment from user through DOM
   const username = e.target.name.value;
   const usercomment = e.target.comment.value;
 
   //validation
-  if (!username) {
+  if (username || usercomment) {
+    //appending values receiving user info from user into our object
+    commentArray.push({
+      user: username,
+      date: "6/14/22",
+      comment: usercomment,
+    });
+    console.log(commentArray);
+
+    //Render the Comment Object
+    comment();
+
+    //Clear the form
+    form.reset();
+  } else {
+    userNameInput.classList.add("comment-section__input--error");
+    usertextArea.classList.add("comment-section__input--error");
+    console.log("Error");
   }
-
-  //appending values receiving user info from user into our object
-  commentArray.push({
-    user: username,
-    date: "6/14/22",
-    comment: usercomment,
-  });
-  console.log(commentArray);
-
-  //Render the Comment Object
-  comment();
-
-  //Clear the form
-  form.reset();
 });
 
 function comment() {

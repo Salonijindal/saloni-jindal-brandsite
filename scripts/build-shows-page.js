@@ -74,7 +74,17 @@ function createElement(showCard, title, value) {
 }
 
 const cardSelected = document.querySelectorAll(".show-section__card");
-console.log(cardSelected);
-cardSelected.addEventListener("click", function onClick() {
-  console.log("box clicked");
+cardSelected.forEach((element) => {
+  element.addEventListener("click", function onClick(event) {
+    cardSelected.forEach((el) => {
+      el.classList.remove("show-section__card--selected");
+    });
+    if (event.target.className === "show-section__info") {
+      event.target.parentElement.parentElement.classList.add(
+        "show-section__card--selected"
+      );
+    } else if (event.target.className === "show-section__card") {
+      element.classList.add("show-section__card--selected");
+    }
+  });
 });

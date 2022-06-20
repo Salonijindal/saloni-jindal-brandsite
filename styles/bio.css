@@ -457,6 +457,14 @@
 }
 .comment-section__input {
   height: 2.25rem;
+  outline: none;
+}
+.comment-section__input--error {
+  border-color: #d22d2d !important;
+}
+.comment-section__input:active {
+  outline: none;
+  border-color: #323232;
 }
 @media screen and (min-width: 768px) {
   .comment-section__input {
@@ -471,6 +479,9 @@
 .comment-section__textarea {
   height: 4.5rem;
   resize: none;
+}
+.comment-section__textarea--error {
+  border-color: #d22d2d !important;
 }
 @media screen and (min-width: 768px) {
   .comment-section__textarea {
