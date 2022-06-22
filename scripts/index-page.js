@@ -1,35 +1,35 @@
+class CreateComment {
+  constructor(name, comment) {
+    this.name = name;
+    this.comment = comment;
+  }
+}
+
+//Get the api key from url
+let apiKey;
+let commentArray = [];
+axios
+  .get("https://project-1-api.herokuapp.com/register")
+  .then((response) => {
+    apiKey = response.data.api_key;
+    console.log(apiKey);
+    return apiKey;
+  })
+  .then((key) => {
+    axios
+      .get(`https://project-1-api.herokuapp.com/comments/?api_key=<${key}>`)
+      .then((response) => {
+        commentArray = response.data;
+        comment();
+      });
+  })
+  .catch((err) => {
+    console.log("Error in fetching Comment data from API!");
+  });
+
 //Generate Date
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, "0");
-var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-var yyyy = today.getFullYear();
-
-today = mm + "/" + dd + "/" + yyyy;
+var today = new Date().getTime();
 console.log(today);
-
-//Comment Array
-let commentArray = [
-  {
-    user: "Connor Walton",
-    date: "02/17/2021",
-    comment:
-      "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-  },
-  {
-    user: "Emilie Beach",
-    date: "01/09/2021",
-    comment:
-      "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-  },
-  {
-    user: "Miles Acosta",
-    date: "12/20/2020",
-    comment:
-      "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-  },
-];
-
-//Loading array into the UI
 
 //Form for Comment section
 const form = document.getElementById("comment-section__form");
@@ -48,87 +48,97 @@ form.addEventListener("submit", (e) => {
   const username = e.target.name.value;
   const usercomment = e.target.comment.value;
 
-  //validation
-  if (username || usercomment) {
-    //appending values receiving user info from user into our object
-    commentArray.push({
-      user: username,
-      date: today,
-      comment: usercomment,
+  //New Object  for comment, using constructor
+  const newComment = new CreateComment(username, usercomment);
+
+  console.log("I entered thi:", newComment);
+  axios
+    .post(
+      `https://project-1-api.herokuapp.com/comments/?api_key=<${apiKey}>`,
+      username && usercomment ? newComment : ""
+    )
+    .then((response) => {
+      commentArray.splice(0, 0, response.data);
+      console.log(commentArray);
+      comment();
+      form.reset();
+    })
+    .catch((error) => {
+      userNameInput.classList.add("comment-section__input--error");
+      usertextArea.classList.add("comment-section__input--error");
     });
-    console.log(commentArray);
 
-    //Render the Comment Object
-    comment();
-
-    //Clear the form
-    form.reset();
-  } else {
-    userNameInput.classList.add("comment-section__input--error");
-    usertextArea.classList.add("comment-section__input--error");
-    console.log("Error");
-  }
+  console.log(commentArray);
+  //Clear the form
 });
 
 function comment() {
   commentList.innerHTML = "";
-  for (i = 0; i < commentArray.length; i++) {
-    appendChild(commentArray[i]);
-  }
+  commentArray.forEach((person) => {
+    //Creating Elements and adding classList to it
+    //Comment Item
+    const commentItem = document.createElement("div");
+    commentItem.classList.add("comment-section__item");
+
+    //Image Element
+    const userImgDiv = document.createElement("div");
+    console.log(userImgDiv);
+    const userImg = document.createElement("img");
+    userImg.classList.add("comment-section__image");
+    userImgDiv.appendChild(userImg);
+    console.log(userImgDiv);
+
+    //Comment Panel
+    const commentPanel = document.createElement("article");
+    commentPanel.classList.add("comment-section__section");
+
+    //User Detail
+    const userDetail = document.createElement("div");
+    userDetail.classList.add("comment-section__detail");
+
+    //UserName
+    const userName = document.createElement("p");
+    userName.classList.add("comment-section__name");
+
+    //User Date
+    const userDate = document.createElement("p");
+    userDate.classList.add("comment-section__date");
+
+    //Comment Text
+    const commentText = document.createElement("p");
+    commentText.classList.add("comment-section__text");
+
+    //append Name and Date into UserDetail
+    userDetail.appendChild(userName);
+    userDetail.appendChild(userDate);
+
+    //Append User Detail and Comment into CommentPanel
+    commentPanel.appendChild(userDetail);
+    commentPanel.appendChild(commentText);
+
+    //append image and Comment Panel into comment item
+    commentItem.appendChild(userImgDiv);
+    commentItem.appendChild(commentPanel);
+
+    //append each comment into List
+
+    commentList.appendChild(commentItem);
+
+    //Passing values from Comment Array into innerHTML tag
+    userName.innerHTML = person.name;
+    userDate.innerHTML = getDate(person.timestamp);
+    commentText.innerHTML = person.comment;
+  });
 }
-function appendChild(person) {
-  //Creating Elements and adding classList to it
-  //Comment Item
-  const commentItem = document.createElement("div");
-  commentItem.classList.add("comment-section__item");
 
-  //Image Element
-  const userImgDiv = document.createElement("div");
-  console.log(userImgDiv);
-  const userImg = document.createElement("img");
-  userImg.classList.add("comment-section__image");
-  userImgDiv.appendChild(userImg);
-  console.log(userImgDiv);
-
-  //Comment Panel
-  const commentPanel = document.createElement("article");
-  commentPanel.classList.add("comment-section__section");
-
-  //User Detail
-  const userDetail = document.createElement("div");
-  userDetail.classList.add("comment-section__detail");
-
-  //UserName
-  const userName = document.createElement("p");
-  userName.classList.add("comment-section__name");
-
-  //User Date
-  const userDate = document.createElement("p");
-  userDate.classList.add("comment-section__date");
-
-  //Comment Text
-  const commentText = document.createElement("p");
-  commentText.classList.add("comment-section__text");
-
-  //append Name and Date into UserDetail
-  userDetail.appendChild(userName);
-  userDetail.appendChild(userDate);
-
-  //Append User Detail and Comment into CommentPanel
-  commentPanel.appendChild(userDetail);
-  commentPanel.appendChild(commentText);
-
-  //append image and Comment Panel into comment item
-  commentItem.appendChild(userImgDiv);
-  commentItem.appendChild(commentPanel);
-
-  //append each comment into List
-
-  commentList.appendChild(commentItem);
-
-  //Passing values from Comment Array into innerHTML tag
-  userName.innerHTML = person.user;
-  userDate.innerHTML = person.date;
-  commentText.innerHTML = person.comment;
-}
 comment();
+
+function getDate(timestamp) {
+  let date = new Date(timestamp);
+
+  let fulldate =
+    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
+  console.log(fulldate);
+  return fulldate;
+}

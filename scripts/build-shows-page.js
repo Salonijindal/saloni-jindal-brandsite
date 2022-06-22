@@ -1,3 +1,29 @@
+let showsInfo = [];
+let apiKey;
+axios
+  .get("https://project-1-api.herokuapp.com/register")
+  .then((response) => {
+    apiKey = response.data.api_key;
+    console.log(apiKey);
+    return apiKey;
+  })
+  .then((key) => {
+    axios
+      .get(`https://project-1-api.herokuapp.com/showdates/?api_key=<${key}>`)
+      .then((response) => {
+        showsInfo = response.data;
+        console.log(showsInfo);
+
+        showsInfo.forEach((item) => {
+          //   console.log(item);
+          displayShows(item);
+        });
+      });
+  })
+  .catch((err) => {
+    console.log("Error in fetching Comment data from API!");
+  });
+
 const showSection = document.querySelector(".show-section");
 //Create a div
 const title = document.createElement("div");
@@ -39,53 +65,16 @@ const showList = document.querySelector(".show-section__list");
 commentContainer.appendChild(title);
 commentContainer.appendChild(showList);
 
-const showsInfo = [
-  {
-    date: "Mon Sept 06 2021",
-    venue: "Ronald Lane",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Tue Sept 21 2021 ",
-    venue: "Pier 3 East ",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Fri Oct 15 2021",
-    venue: "View Lounge",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Sat Nov 06 2021",
-    venue: "Hyatt Agency ",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Fri Nov 26 2021",
-    venue: "Moscow Center ",
-    location: "San Francisco, CA",
-  },
-  ,
-  {
-    date: "Wed Dec 15 2021",
-    venue: "Press Club ",
-    location: "San Francisco, CA",
-  },
-];
-
-showsInfo.forEach((item) => {
-  //   console.log(item);
-  displayShows(item);
-});
-
 //display elements for mobile view
 function displayShows(item) {
   //Show Card
+  console.log(item);
   const showCard = document.createElement("li");
   showCard.classList.add("show-section__card");
   showList.appendChild(showCard);
-  createElement(showCard, "Date", item.date);
-  createElement(showCard, "venue", item.venue);
+
+  createElement(showCard, "Date", getDate(parseInt(item.date)));
+  createElement(showCard, "venue", item.place);
   createElement(showCard, "location", item.location);
 
   //Button
@@ -130,3 +119,12 @@ cardSelected.forEach((element) => {
     }
   });
 });
+function getDate(timestamp) {
+  let date = new Date(timestamp);
+
+  let fulldate =
+    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
+  console.log(fulldate);
+  return fulldate;
+}

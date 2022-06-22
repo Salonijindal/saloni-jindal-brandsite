@@ -460,7 +460,7 @@
   outline: none;
 }
 .comment-section__input--error {
-  border-color: #d22d2d !important;
+  border-color: #d22d2d;
 }
 .comment-section__input:active {
   outline: none;
@@ -481,7 +481,7 @@
   resize: none;
 }
 .comment-section__textarea--error {
-  border-color: #d22d2d !important;
+  border-color: #d22d2d;
 }
 @media screen and (min-width: 768px) {
   .comment-section__textarea {
@@ -495,7 +495,7 @@
 }
 .comment-section__list {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 .comment-section__item {
   display: flex;

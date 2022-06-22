@@ -211,7 +211,7 @@
     height: 2.25rem;
     outline: none;
     &--error {
-      border-color: #d22d2d !important;
+      border-color: #d22d2d;
     }
     &:active {
       outline: none;
@@ -229,7 +229,7 @@
     height: 4.5rem;
     resize: none;
     &--error {
-      border-color: #d22d2d !important;
+      border-color: #d22d2d;
     }
     @include mixins.tablet {
       height: 6rem;
@@ -240,7 +240,7 @@
   }
   &__list {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
   &__item {
     display: flex;
