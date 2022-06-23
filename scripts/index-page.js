@@ -20,7 +20,7 @@ axios
       .get(`https://project-1-api.herokuapp.com/comments/?api_key=<${key}>`)
       .then((response) => {
         commentArray = response.data;
-        comment();
+        displayComment();
       });
   })
   .catch((err) => {
@@ -60,7 +60,7 @@ form.addEventListener("submit", (e) => {
     .then((response) => {
       commentArray.splice(0, 0, response.data);
       console.log(commentArray);
-      comment();
+      displayComment();
       form.reset();
     })
     .catch((error) => {
@@ -72,7 +72,7 @@ form.addEventListener("submit", (e) => {
   //Clear the form
 });
 
-function comment() {
+function displayComment() {
   commentList.innerHTML = "";
   commentArray.forEach((person) => {
     //Creating Elements and adding classList to it
@@ -130,8 +130,6 @@ function comment() {
     commentText.innerHTML = person.comment;
   });
 }
-
-comment();
 
 function getDate(timestamp) {
   let date = new Date(timestamp);
