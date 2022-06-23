@@ -4,7 +4,6 @@ axios
   .get("https://project-1-api.herokuapp.com/register")
   .then((response) => {
     apiKey = response.data.api_key;
-    console.log(apiKey);
     return apiKey;
   })
   .then((key) => {
@@ -12,10 +11,8 @@ axios
       .get(`https://project-1-api.herokuapp.com/showdates/?api_key=<${key}>`)
       .then((response) => {
         showsInfo = response.data;
-        console.log(showsInfo);
 
         showsInfo.forEach((item) => {
-          //   console.log(item);
           displayShows(item);
         });
       });
@@ -68,7 +65,6 @@ commentContainer.appendChild(showList);
 //display elements for mobile view
 function displayShows(item) {
   //Show Card
-  console.log(item);
   const showCard = document.createElement("li");
   showCard.classList.add("show-section__card");
   showList.appendChild(showCard);
@@ -119,12 +115,11 @@ cardSelected.forEach((element) => {
     }
   });
 });
+
 function getDate(timestamp) {
   let date = new Date(timestamp);
 
   let fulldate =
     date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-
-  console.log(fulldate);
   return fulldate;
 }
