@@ -15,17 +15,13 @@ axios
       .get(`https://project-1-api.herokuapp.com/comments/?api_key=<${apiKey}>`)
       .then((response) => {
         commentArray = response.data;
-        console.log(commentArray);
         displayComment();
       });
   })
-  .catch((err) => {
-    console.log("Error in fetching Comment data from API!");
-  });
+  .catch((err) => {});
 
 //Generate Date
 var today = new Date().getTime();
-console.log(today);
 
 //Form for Comment section
 const form = document.getElementById("comment-section__form");
@@ -46,8 +42,6 @@ form.addEventListener("submit", (e) => {
 
   //New Object  for comment, using constructor
   const newComment = new CreateComment(username, usercomment);
-
-  console.log("I entered thi:", newComment);
   axios
     .post(
       `https://project-1-api.herokuapp.com/comments/?api_key=<${apiKey}>`,
@@ -55,7 +49,6 @@ form.addEventListener("submit", (e) => {
     )
     .then((response) => {
       commentArray.unshift(response.data);
-      console.log(commentArray);
       displayComment();
       form.reset();
     })
@@ -63,9 +56,6 @@ form.addEventListener("submit", (e) => {
       userNameInput.classList.add("comment-section__input--error");
       usertextArea.classList.add("comment-section__input--error");
     });
-
-  console.log("after post", commentArray);
-  //Clear the form
 });
 
 function displayComment() {
@@ -83,11 +73,9 @@ function displayComment() {
 
     //Image Element
     const userImgDiv = document.createElement("div");
-    console.log(userImgDiv);
     const userImg = document.createElement("img");
     userImg.classList.add("comment-section__image");
     userImgDiv.appendChild(userImg);
-    console.log(userImgDiv);
 
     //Comment Panel
     const commentPanel = document.createElement("article");
@@ -160,35 +148,23 @@ function displayComment() {
     userDate.innerHTML = getDate(person.timestamp);
     commentText.innerHTML = person.comment;
     likeCount.innerHTML = person.likes == 0 ? "" : person.likes;
-
-    // const deleteComment = document.getElementById("comment-section__delete");
-    // console.log("person:----", person);
-
-    // deleteComment.addEventListener("click", handleDelete);
   });
 }
 
 function getDate(timestamp) {
   let date = new Date(timestamp);
-
   let fulldate =
     date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-
-  console.log(fulldate);
   return fulldate;
 }
 
 function handleDelete(personId) {
-  console.log("Delete Icon clicked on index: ", personId);
   document.getElementById(personId).remove();
   axios
     .delete(
       `https://project-1-api.herokuapp.com/comments/${personId}?api_key=<${apiKey}>`
     )
     .then((response) => {
-      console.log(
-        `https://project-1-api.herokuapp.com/comments/${personId}?api_key=<${apiKey}> `
-      );
       commentArray = commentArray.filter(function (person) {
         return !(person.id === response.data.id);
       });
@@ -197,7 +173,6 @@ function handleDelete(personId) {
 }
 
 function handleLike(personId, button, count) {
-  console.log("Delete Icon clicked on index: ", personId);
   axios
     .put(
       `https://project-1-api.herokuapp.com/comments/${personId}/like/?api_key=<${apiKey}>`
