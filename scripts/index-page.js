@@ -6,20 +6,16 @@ class CreateComment {
 }
 
 //Get the api key from url
-let apiKey;
+let apiKey = "5cfcdaca-f241-4691-bdaf-5161ace5de59"; //Fixed the API key to render same user
 let commentArray = [];
 axios
   .get("https://project-1-api.herokuapp.com/register")
-  .then((response) => {
-    apiKey = response.data.api_key;
-    console.log(apiKey);
-    return apiKey;
-  })
-  .then((key) => {
+  .then(() => {
     axios
-      .get(`https://project-1-api.herokuapp.com/comments/?api_key=<${key}>`)
+      .get(`https://project-1-api.herokuapp.com/comments/?api_key=<${apiKey}>`)
       .then((response) => {
         commentArray = response.data;
+        console.log(commentArray);
         displayComment();
       });
   })
@@ -33,8 +29,8 @@ console.log(today);
 
 //Form for Comment section
 const form = document.getElementById("comment-section__form");
-
 const commentList = document.querySelector(".comment-section__list");
+
 form.addEventListener("submit", (e) => {
   //Orevent default reloads
   e.preventDefault();
@@ -68,7 +64,7 @@ form.addEventListener("submit", (e) => {
       usertextArea.classList.add("comment-section__input--error");
     });
 
-  console.log(commentArray);
+  console.log("after post", commentArray);
   //Clear the form
 });
 
@@ -78,6 +74,7 @@ function displayComment() {
     //Creating Elements and adding classList to it
     //Comment Item
     const commentItem = document.createElement("div");
+    commentItem.setAttribute("id", person.id);
     commentItem.classList.add("comment-section__item");
 
     //Image Element
@@ -108,13 +105,29 @@ function displayComment() {
     const commentText = document.createElement("p");
     commentText.classList.add("comment-section__text");
 
+    //Create delete button and Icon, append icon into Delete Button
+    const deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fa");
+    deleteIcon.classList.add("fa-trash");
+
+    const deleteButton = document.createElement("Button");
+    deleteButton.id = "comment-section__delete";
+    deleteButton.addEventListener("click", () => handleDelete(person.id));
+    deleteButton.appendChild(deleteIcon);
+
+    //Like Icon
+    const likeButton = document.createElement("Button");
+    likeButton.classList.add("comment-section__like");
+
     //append Name and Date into UserDetail
     userDetail.appendChild(userName);
     userDetail.appendChild(userDate);
 
-    //Append User Detail and Comment into CommentPanel
+    //Append User Detail, Comment and delete into CommentPanel
     commentPanel.appendChild(userDetail);
     commentPanel.appendChild(commentText);
+    commentPanel.appendChild(deleteButton);
+    commentPanel.appendChild(likeButton);
 
     //append image and Comment Panel into comment item
     commentItem.appendChild(userImgDiv);
@@ -128,6 +141,11 @@ function displayComment() {
     userName.innerHTML = person.name;
     userDate.innerHTML = getDate(person.timestamp);
     commentText.innerHTML = person.comment;
+
+    // const deleteComment = document.getElementById("comment-section__delete");
+    // console.log("person:----", person);
+
+    // deleteComment.addEventListener("click", handleDelete);
   });
 }
 
@@ -139,4 +157,22 @@ function getDate(timestamp) {
 
   console.log(fulldate);
   return fulldate;
+}
+
+function handleDelete(personId) {
+  console.log("Delete Icon clicked on index: ", personId);
+  document.getElementById(personId).remove();
+  axios
+    .delete(
+      `https://project-1-api.herokuapp.com/comments/${personId}?api_key=<${apiKey}>`
+    )
+    .then((response) => {
+      console.log(
+        `https://project-1-api.herokuapp.com/comments/${personId}?api_key=<${apiKey}> `
+      );
+      commentArray = commentArray.filter(function (person) {
+        return !(person.id === response.data.id);
+      });
+    })
+    .catch((error) => {});
 }
