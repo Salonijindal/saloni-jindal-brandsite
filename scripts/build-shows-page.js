@@ -95,6 +95,11 @@ function createElement(showCard, title, value) {
   showInfo.classList.add("show-section__info");
   showDetail.appendChild(showInfo);
   showInfo.innerHTML = value;
+
+  if (title === "venue" || title === "location") {
+    showInfo.classList.add("show-section__info--light-font");
+  }
+
   return showCard;
 }
 
@@ -115,9 +120,6 @@ cardSelected.forEach((element) => {
 });
 
 function getDate(timestamp) {
-  let date = new Date(timestamp);
-
-  let fulldate =
-    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-  return fulldate;
+  let date = new Date(timestamp).toDateString();
+  return date;
 }

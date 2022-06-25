@@ -20,9 +20,6 @@ axios
   })
   .catch((err) => {});
 
-//Generate Date
-var today = new Date().getTime();
-
 //Form for Comment section
 const form = document.getElementById("comment-section__form");
 const commentList = document.querySelector(".comment-section__list");

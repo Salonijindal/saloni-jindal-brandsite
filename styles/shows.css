@@ -419,6 +419,14 @@
 .show-section__info {
   font-weight: 600;
 }
+.show-section__info--light-font {
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  .show-section__info--light-font {
+    font-weight: 400;
+  }
+}
 @media screen and (min-width: 768px) {
   .show-section__btn--special {
     visibility: hidden;

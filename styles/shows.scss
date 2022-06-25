@@ -188,6 +188,12 @@
   }
   &__info {
     font-weight: 600;
+    &--light-font {
+      font-weight: 600;
+      @include mixins.tablet {
+        font-weight: 400;
+      }
+    }
   }
   &__btn {
     &--special {
