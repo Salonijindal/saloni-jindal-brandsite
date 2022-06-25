@@ -54,7 +54,7 @@ form.addEventListener("submit", (e) => {
       username && usercomment ? newComment : ""
     )
     .then((response) => {
-      commentArray.splice(0, 0, response.data);
+      commentArray.unshift(response.data);
       console.log(commentArray);
       displayComment();
       form.reset();
@@ -70,6 +70,10 @@ form.addEventListener("submit", (e) => {
 
 function displayComment() {
   commentList.innerHTML = "";
+  //Sort it in descending order (most recent comment should be at top), then display it
+  commentArray.sort((a, b) => {
+    return b.timestamp - a.timestamp;
+  });
   commentArray.forEach((person) => {
     //Creating Elements and adding classList to it
     //Comment Item
