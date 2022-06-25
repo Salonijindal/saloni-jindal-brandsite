@@ -112,12 +112,28 @@ function displayComment() {
 
     const deleteButton = document.createElement("Button");
     deleteButton.id = "comment-section__delete";
-    deleteButton.addEventListener("click", () => handleDelete(person.id));
     deleteButton.appendChild(deleteIcon);
+    deleteButton.addEventListener("click", () => handleDelete(person.id));
 
-    //Like Icon
+    //Create like button, p and Icon, append icon into like Button Icon
+    const likeIcon = document.createElement("i");
+    likeIcon.classList.add("fa");
+    likeIcon.classList.add("fa-thumbs-up");
+    const likeCount = document.createElement("p");
+    likeCount.classList.add("comment-section__likecount");
     const likeButton = document.createElement("Button");
-    likeButton.classList.add("comment-section__like");
+    likeButton.id = "comment-section__like";
+    likeButton.appendChild(likeIcon);
+    likeButton.appendChild(likeCount);
+    likeButton.addEventListener("click", () =>
+      handleLike(person.id, likeButton, likeCount)
+    );
+
+    //Appending like button and Delete button into a div
+    const emojiSection = document.createElement("div");
+    emojiSection.classList.add("comment-section__emoji-panel");
+    emojiSection.appendChild(likeButton);
+    emojiSection.appendChild(deleteButton);
 
     //append Name and Date into UserDetail
     userDetail.appendChild(userName);
@@ -126,21 +142,20 @@ function displayComment() {
     //Append User Detail, Comment and delete into CommentPanel
     commentPanel.appendChild(userDetail);
     commentPanel.appendChild(commentText);
-    commentPanel.appendChild(deleteButton);
-    commentPanel.appendChild(likeButton);
+    commentPanel.appendChild(emojiSection);
 
     //append image and Comment Panel into comment item
     commentItem.appendChild(userImgDiv);
     commentItem.appendChild(commentPanel);
 
     //append each comment into List
-
     commentList.appendChild(commentItem);
 
     //Passing values from Comment Array into innerHTML tag
     userName.innerHTML = person.name;
     userDate.innerHTML = getDate(person.timestamp);
     commentText.innerHTML = person.comment;
+    likeCount.innerHTML = person.likes == 0 ? "" : person.likes;
 
     // const deleteComment = document.getElementById("comment-section__delete");
     // console.log("person:----", person);
@@ -173,6 +188,18 @@ function handleDelete(personId) {
       commentArray = commentArray.filter(function (person) {
         return !(person.id === response.data.id);
       });
+    })
+    .catch((error) => {});
+}
+
+function handleLike(personId, button, count) {
+  console.log("Delete Icon clicked on index: ", personId);
+  axios
+    .put(
+      `https://project-1-api.herokuapp.com/comments/${personId}/like/?api_key=<${apiKey}>`
+    )
+    .then((response) => {
+      count.innerHTML = response.data.likes;
     })
     .catch((error) => {});
 }
