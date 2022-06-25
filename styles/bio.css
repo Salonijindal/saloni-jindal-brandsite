@@ -553,6 +553,7 @@
   color: black;
   text-align: center;
   margin-left: 0.5rem;
+  padding-top: 5px;
 }
 
 #comment-section__like {
@@ -566,4 +567,5 @@
   align-items: center;
   -moz-column-gap: 5px;
        column-gap: 5px;
+  padding: 0;
 }/*# sourceMappingURL=bio.css.map */

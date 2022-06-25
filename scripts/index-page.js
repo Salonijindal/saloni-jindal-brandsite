@@ -98,9 +98,9 @@ function displayComment() {
     commentText.classList.add("comment-section__text");
 
     //Create delete button and Icon, append icon into Delete Button
-    const deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("fa");
-    deleteIcon.classList.add("fa-trash");
+    const deleteIcon = document.createElement("img");
+    deleteIcon.setAttribute("src", "../assets/icons/SVG/icon-delete.svg");
+    deleteIcon.setAttribute("alt", "Comment Delete Icon");
 
     const deleteButton = document.createElement("Button");
     deleteButton.id = "comment-section__delete";
@@ -108,9 +108,9 @@ function displayComment() {
     deleteButton.addEventListener("click", () => handleDelete(person.id));
 
     //Create like button, p and Icon, append icon into like Button Icon
-    const likeIcon = document.createElement("i");
-    likeIcon.classList.add("fa");
-    likeIcon.classList.add("fa-thumbs-up");
+    const likeIcon = document.createElement("img");
+    likeIcon.setAttribute("src", "../assets/icons/SVG/icon-like.svg");
+    likeIcon.setAttribute("alt", "Comment Like Icon");
     const likeCount = document.createElement("p");
     likeCount.classList.add("comment-section__likecount");
     const likeButton = document.createElement("Button");

@@ -17,9 +17,7 @@ axios
         });
       });
   })
-  .catch((err) => {
-    console.log("Error in fetching Comment data from API!");
-  });
+  .catch((err) => {});
 
 const showSection = document.querySelector(".show-section");
 //Create a div
