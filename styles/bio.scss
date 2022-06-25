@@ -216,7 +216,7 @@
     height: 2.25rem;
     outline: none;
     &--error {
-      border-color: #d22d2d;
+      border-color: #d22d2d !important;
     }
     &:active {
       outline: none;
@@ -234,7 +234,7 @@
     height: 4.5rem;
     resize: none;
     &--error {
-      border-color: #d22d2d;
+      border-color: #d22d2d !important;
     }
     @include mixins.tablet {
       height: 6rem;
